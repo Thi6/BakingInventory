@@ -1,6 +1,5 @@
 package com.bae.persistence.domain;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,13 +16,13 @@ public class Ingredient {
 	private String name;
 	private int quantity;
 	private int threshold;
-	private Date expiryDate;
+	private String expiryDate;
 	
 	public Ingredient() {
 		
 	}
 	
-	public Ingredient(int ingredientId, String name, int quantity, int threshold, Date expiryDate) {
+	public Ingredient(int ingredientId, String name, int quantity, int threshold, String expiryDate) {
 		super();
 		this.ingredientId = ingredientId;
 		this.name = name;
@@ -32,6 +31,7 @@ public class Ingredient {
 		this.expiryDate = expiryDate;
 	}
 	
+
 	public int getIngredientId() {
 		return ingredientId;
 	}
@@ -40,7 +40,7 @@ public class Ingredient {
 	}
 	public String getName() {
 		return name;
-	}
+	} 
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -56,10 +56,10 @@ public class Ingredient {
 	public void setThreshold(int threshold) {
 		this.threshold = threshold;
 	}
-	public Date getExpiryDate() {
+	public String getExpiryDate() {
 		return expiryDate;
 	}
-	public void setExpiryDate(Date expiryDate) {
+	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 	
