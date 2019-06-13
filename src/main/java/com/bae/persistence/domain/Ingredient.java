@@ -2,8 +2,18 @@ package com.bae.persistence.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ingredient {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ingredientId;
+	@Column(length = 250)
 	private String name;
 	private int quantity;
 	private int threshold;
