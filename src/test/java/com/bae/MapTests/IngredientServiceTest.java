@@ -33,12 +33,12 @@ public class IngredientServiceTest {
 		assertEquals("{\"1\":{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":10,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}}", imr.getAllIngredients());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void getAnIngredientTest() {
 		imr.getIngredientMap().put(1, ing1);
 		imr.getIngredientMap().put(2, ing2);
-		assertEquals("This ingredient does not exist", imr.getAnIngredient(5));
+		assertEquals("null", imr.getAnIngredient(5));
 	}
 	
 	
