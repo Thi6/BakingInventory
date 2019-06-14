@@ -13,7 +13,7 @@ import javax.persistence.TypedQuery;
 import com.bae.persistence.domain.Ingredient;
 import com.bae.util.JSONUtil;
 
-@Transactional(value = TxType.SUPPORTS)
+@Transactional(TxType.SUPPORTS)
 @Default
 public class IngredientDBRepository implements IngredientRepository{
 	
