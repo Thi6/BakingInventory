@@ -2,6 +2,7 @@ package com.bae.REST;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -26,5 +27,12 @@ public class IngredientController {
 	@Produces({"application/json"})
 	public String getAnIngredient(@PathParam("id") int id) {
 		return ingredientService.getAnIngredient(id);
+	}
+	
+	@Path("/addIngredient")
+	@POST
+	@Produces({"application/json"})
+	public String addIngredient(String ingredient) {
+		return ingredientService.addIngredient(ingredient);
 	}
 }  

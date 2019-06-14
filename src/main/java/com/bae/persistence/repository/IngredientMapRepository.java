@@ -24,6 +24,14 @@ public class IngredientMapRepository implements IngredientRepository{
 		return util.getJSONForObject(ingredientMap.get(id));
 	}
 
+
+	@Override
+	public String addIngredient(String ingredient) {
+		Ingredient newIngr = util.getObjectForJSON(ingredient, Ingredient.class);
+		ingredientMap.put(newIngr.getIngredientId(), newIngr);
+		return "Ingredient successfully added";
+	}
+
 	public Map<Integer, Ingredient> getIngredientMap() {
 		return ingredientMap;
 	}
@@ -31,7 +39,5 @@ public class IngredientMapRepository implements IngredientRepository{
 	public void setIngredientMap(Map<Integer, Ingredient> ingredientMap) {
 		this.ingredientMap = ingredientMap;
 	}
-
- 
 
 }

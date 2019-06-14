@@ -21,5 +21,11 @@ public class IngredientServiceImplementation implements IngredientService {
 	public String getAnIngredient(int id) {
 		return ingredientRepo.getAnIngredient(id);
 	}
+
+	@Override
+	public String addIngredient(String ingredient) {
+		return ingredientRepo.addIngredient(ingredient);
+	}
+	
   
 }
