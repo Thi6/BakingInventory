@@ -29,9 +29,25 @@ public class IngredientMapRepository implements IngredientRepository{
 	public String addIngredient(String ingredient) {
 		Ingredient newIngr = util.getObjectForJSON(ingredient, Ingredient.class);
 		ingredientMap.put(newIngr.getIngredientId(), newIngr);
-		return "Ingredient successfully added";
+		if (ingredientMap.containsKey(newIngr.getIngredientId())) {
+			return "Ingredient successfully added";
+		} else {
+			return "Ingredient has not been added";
+		}
+		
 	}
-
+	
+	@Override
+	public String removeIngredient(int id) {
+		ingredientMap.remove(id);
+		if (ingredientMap.containsKey(id)) {
+			return "Ingredient has not been removed";
+		} else {
+			return "Ingredient has been removed";
+		}
+		
+	}
+	
 	public Map<Integer, Ingredient> getIngredientMap() {
 		return ingredientMap;
 	}
@@ -39,5 +55,7 @@ public class IngredientMapRepository implements IngredientRepository{
 	public void setIngredientMap(Map<Integer, Ingredient> ingredientMap) {
 		this.ingredientMap = ingredientMap;
 	}
+
+	
 
 }

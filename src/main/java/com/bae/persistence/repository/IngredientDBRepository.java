@@ -13,7 +13,8 @@ import javax.persistence.TypedQuery;
 import com.bae.persistence.domain.Ingredient;
 import com.bae.util.JSONUtil;
 
-@Transactional(value = TxType.SUPPORTS)
+
+@Transactional(TxType.SUPPORTS)
 @Default
 public class IngredientDBRepository implements IngredientRepository{
 	
@@ -43,9 +44,15 @@ public class IngredientDBRepository implements IngredientRepository{
 		return  "{\"message\": \"ingredient has been sucessfully added\"}";
 	}
 
+	@Transactional(TxType.REQUIRED)
+	public String removeIngredient(int id) {
+		//Ingredient ingrInDB = util.getObjectForJSON(getAnIngredient(id), Ingredient.class);
+		
+		if (manager.contains(manager.find(Ingredient.class, id))) {
 
-	public void setManager(EntityManager manager) {
-		this.manager = manager;
+			manager.remove(manager.find(Ingredient.class, id));
+		}
+		return "{\"message\": \"account successfully deleted\"}";
 	}
 	
 }
