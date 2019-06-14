@@ -32,8 +32,7 @@ public class IngredientDBRepository implements IngredientRepository{
  
 	@Override
 	public String getAnIngredient(int id) {
-	
-		return null;
+		return util.getJSONForObject(manager.find(Ingredient.class, id));
 	}
 	
 }

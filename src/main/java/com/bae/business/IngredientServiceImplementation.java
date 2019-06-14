@@ -19,8 +19,7 @@ public class IngredientServiceImplementation implements IngredientService {
 
 	@Override
 	public String getAnIngredient(int id) {
-		
-		return null;
+		return ingredientRepo.getAnIngredient(id);
 	}
   
 }
