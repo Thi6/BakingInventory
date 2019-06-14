@@ -9,11 +9,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Ingredient {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ingredientId;
 	@Column(length = 250)
 	private String name;
+	private String category;
 	private int quantity;
 	private int threshold;
 	private String expiryDate;
@@ -21,17 +24,16 @@ public class Ingredient {
 	public Ingredient() {
 		
 	}
-	
-	public Ingredient(int ingredientId, String name, int quantity, int threshold, String expiryDate) {
+	public Ingredient(int ingredientId, String name, String category, int quantity, int threshold, String expiryDate) {
 		super();
 		this.ingredientId = ingredientId;
 		this.name = name;
+		this.category = category;
 		this.quantity = quantity;
 		this.threshold = threshold;
 		this.expiryDate = expiryDate;
 	}
 	
-
 	public int getIngredientId() {
 		return ingredientId;
 	}
@@ -40,9 +42,15 @@ public class Ingredient {
 	}
 	public String getName() {
 		return name;
-	} 
+	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -62,6 +70,7 @@ public class Ingredient {
 	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
+
 	
 	
 }
