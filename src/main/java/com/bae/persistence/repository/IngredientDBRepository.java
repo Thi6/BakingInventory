@@ -53,11 +53,25 @@ public class IngredientDBRepository implements IngredientRepository{
 		} else {
 			return "{\"message\": \"cannot find this ingredient\"}";
 		}
-		
 	}
 
-	public void setManager(EntityManager manager) {
-		this.manager = manager;
+	@Override
+	@Transactional(TxType.REQUIRED)
+	public String updateIngredient(int id, String ingredient) {
+		Ingredient ingrToUpdate = manager.find(Ingredient.class, id);
+		Ingredient updatedIngredient = util.getObjectForJSON(ingredient, Ingredient.class);
+		if (ingrToUpdate != null) {
+			ingrToUpdate.setName(updatedIngredient.getName());
+			ingrToUpdate.setCategory(updatedIngredient.getCategory());
+			ingrToUpdate.setQuantity(updatedIngredient.getQuantity());
+			ingrToUpdate.setThreshold(updatedIngredient.getThreshold());
+			ingrToUpdate.setExpiryDate(updatedIngredient.getExpiryDate());
+			manager.persist(ingrToUpdate);
+			return "{\"message\": \"ingredient successfully updated\"}";
+		} else {
+			return "{\"message\": \"cannot find ingredient\"}";
+		}
+		
 	}
-	
+		
 }

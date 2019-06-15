@@ -50,4 +50,16 @@ public class IngredientMapRepository implements IngredientRepository{
 		this.ingredientMap = ingredientMap;
 	}
 
+	@Override
+	public String updateIngredient(int id, String ingredient) {
+		Ingredient updatedIngredient = util.getObjectForJSON(ingredient, Ingredient.class);
+		if (ingredientMap.containsKey(id)) {
+			ingredientMap.replace(id, updatedIngredient);
+			return "Ingredient successfully updated";
+		} else {
+			return "Cannot find ingredient"; 
+		}
+		
+	}
+
 }

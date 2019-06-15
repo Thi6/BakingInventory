@@ -21,7 +21,7 @@ public class Ingredient {
 	private int threshold;
 	private String expiryDate;
 	
-	public Ingredient() {
+	public Ingredient() { 
 		
 	}
 	public Ingredient(int ingredientId, String name, String category, int quantity, int threshold, String expiryDate) {
@@ -69,6 +69,11 @@ public class Ingredient {
 	}
 	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
+	}
+	@Override
+	public String toString() {
+		return "Ingredient [ingredientId=" + ingredientId + ", name=" + name + ", category=" + category + ", quantity="
+				+ quantity + ", threshold=" + threshold + ", expiryDate=" + expiryDate + "]";
 	}
 
 	
