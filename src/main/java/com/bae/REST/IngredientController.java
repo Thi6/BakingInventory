@@ -1,6 +1,7 @@
 package com.bae.REST;
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -34,5 +35,12 @@ public class IngredientController {
 	@Produces({"application/json"})
 	public String addIngredient(String ingredient) {
 		return ingredientService.addIngredient(ingredient);
+	}
+	
+	@Path("/removeIngredient/{id}")
+	@DELETE
+	@Produces({"application/json"})
+	public String removeIngredient(@PathParam("id") int id) {
+		return ingredientService.removeIngredient(id);
 	}
 }  

@@ -42,7 +42,19 @@ public class IngredientDBRepository implements IngredientRepository{
 		manager.persist(newIngr);
 		return  "{\"message\": \"ingredient has been sucessfully added\"}";
 	}
-
+	
+	@Transactional(TxType.REQUIRED)
+	public String removeIngredient(int id) {
+		Ingredient ingToRemove = manager.find(Ingredient.class, id);		
+		
+		if (manager.contains(ingToRemove)) {
+			manager.remove(ingToRemove);
+			return "{\"message\": \"ingredient successfully deleted\"}";
+		} else {
+			return "{\"message\": \"cannot find this ingredient\"}";
+		}
+		
+	}
 
 	public void setManager(EntityManager manager) {
 		this.manager = manager;

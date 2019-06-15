@@ -27,5 +27,9 @@ public class IngredientServiceImplementation implements IngredientService {
 		return ingredientRepo.addIngredient(ingredient);
 	}
 	
+	@Override
+	public String removeIngredient(int id) {
+		return ingredientRepo.removeIngredient(id);
+	}
   
 }
