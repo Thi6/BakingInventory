@@ -5,4 +5,6 @@ public interface IngredientRepository {
 	String getAnIngredient(int id);
 	String addIngredient(String ingredient);
 	String removeIngredient(int id);
+	String updateIngredient(int id, String ingredient);
+	
 }

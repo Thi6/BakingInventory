@@ -85,4 +85,12 @@ public class IngredientServiceTest {
 		
 	}
 	 
+	@Test
+	public void updateIngredientTest() {
+		imr.getIngredientMap().put(1, ing1);
+		imr.updateIngredient(1, "{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":100,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}");
+		assertEquals(100, imr.getIngredientMap().get(1).getQuantity()); 
+	}
+	
+	 
 }
