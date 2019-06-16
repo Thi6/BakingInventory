@@ -14,4 +14,9 @@ public class RecipeServiceImplementation implements RecipeService{
 		return recipeRepo.getAllRecipes();
 	}
 
+	@Override
+	public String getARecipe(int id) {
+		return recipeRepo.getARecipe(id);
+	}
+
 }

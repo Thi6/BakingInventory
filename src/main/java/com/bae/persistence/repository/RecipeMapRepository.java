@@ -20,8 +20,7 @@ public class RecipeMapRepository implements RecipeRepository{
 
 	@Override 
 	public String getARecipe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return  util.getJSONForObject(recipeMap.get(id));
 	}
 
 	@Override

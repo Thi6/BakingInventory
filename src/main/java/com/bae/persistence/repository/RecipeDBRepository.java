@@ -31,8 +31,7 @@ public class RecipeDBRepository implements RecipeRepository {
 
 	@Override
 	public String getARecipe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(manager.find(Recipe.class, id));
 	}
 
 	@Override
