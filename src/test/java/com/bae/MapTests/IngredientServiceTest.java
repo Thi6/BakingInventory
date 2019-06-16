@@ -82,8 +82,19 @@ public class IngredientServiceTest {
 		imr.removeIngredient(3);
 		assertEquals(false, imr.getIngredientMap().containsKey(3));
 		assertEquals(true, imr.getIngredientMap().containsKey(2));
-		
-	}
+	} 
+	
+	@Test
+	public void removeIngredientTest3() {
+		//remove one ingredient that exists and one that doesn't
+		imr.getIngredientMap().put(1, ing1);
+		imr.getIngredientMap().put(2, ing2);
+				
+		imr.removeIngredient(1);
+		assertEquals(false, imr.getIngredientMap().containsKey(1));
+		imr.removeIngredient(3);
+		assertEquals(false, imr.getIngredientMap().containsKey(3));
+	} 
 	 
 	@Test
 	public void updateIngredientTest() {

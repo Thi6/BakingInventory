@@ -24,4 +24,9 @@ public class RecipeServiceImplementation implements RecipeService{
 		return recipeRepo.createRecipe(recipe);
 	}
 
+	@Override
+	public String removeRecipe(int id) {
+		return recipeRepo.removeRecipe(id);
+	}
+
 }

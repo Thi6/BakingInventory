@@ -13,17 +13,17 @@ import com.bae.business.IngredientService;
 
 @Path("ingredient")
 public class IngredientController {
-	
+ 	
 	@Inject
 	private IngredientService ingredientService;
-	
+ 	
 	@Path("/getAllIngredients")
 	@GET
 	@Produces({"application/json"})
 	public String getAllIngredients() {
 		return ingredientService.getAllIngredients();
 	}
- 	
+   	
 	@Path("/getAnIngredient/{id}")
 	@GET
 	@Produces({"application/json"})
@@ -51,5 +51,7 @@ public class IngredientController {
 	public String updateIngredient(@PathParam("id") int id, String ingredient) {
 		return ingredientService.updateIngredient(id, ingredient);
 	}
+	
+	
 	
 }  

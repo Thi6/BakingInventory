@@ -32,8 +32,13 @@ public class RecipeMapRepository implements RecipeRepository{
  
 	@Override
 	public String removeRecipe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		recipeMap.remove(id);
+		if (recipeMap.containsKey(id)) {
+			return "Recipe has not been removed";
+		} else {
+			return "Recipe successfully removed";
+		}
+		
 	}
 
 	@Override

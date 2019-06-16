@@ -13,7 +13,7 @@ public class RecipeServiceTest {
 	private RecipeMapRepository rmr;
 	private Recipe recipe1 = new Recipe(1, "Chocolate Chip Cookie");
 	private Recipe recipe2 = new Recipe(2, "Carrot Cake");
-	private Recipe recipe3 = new Recipe(3, "Red Velvet Cupcake");
+	
 	private JSONUtil util = new JSONUtil();
 	
 	@Before
@@ -68,4 +68,35 @@ public class RecipeServiceTest {
 		assertEquals("Recipe successfully added", rmr.createRecipe(newRecipe2));
 		assertEquals(2, rmr.getRecipeMap().size());
 	}
+	
+	@Test
+	public void removeRecipeTest() {
+		rmr.getRecipeMap().put(1, recipe1);
+		rmr.removeRecipe(1);
+		assertEquals(false, rmr.getRecipeMap().containsKey(1));
+	}
+	
+	@Test
+	public void removeRecipeTest2() {
+		rmr.getRecipeMap().put(1, recipe1);
+		rmr.getRecipeMap().put(2, recipe2);
+				
+		rmr.removeRecipe(1);
+		assertEquals(false, rmr.getRecipeMap().containsKey(1));
+		rmr.removeRecipe(2);
+		assertEquals(false, rmr.getRecipeMap().containsKey(2));
+	}
+	
+	@Test
+	public void removeRecipeTest3() {
+	// remove one recipe that exists and one that does not
+		rmr.getRecipeMap().put(1, recipe1);
+		rmr.getRecipeMap().put(2, recipe2);
+				
+		rmr.removeRecipe(1);
+		assertEquals(false, rmr.getRecipeMap().containsKey(1));
+		rmr.removeRecipe(3);
+		assertEquals(false, rmr.getRecipeMap().containsKey(3));
+	}
+	
 }

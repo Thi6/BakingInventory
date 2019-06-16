@@ -41,10 +41,16 @@ public class RecipeDBRepository implements RecipeRepository {
 		return "{\"message\": \"recipe successfully added\"}";
 	}
 
-	@Override
+	
+	@Transactional(TxType.REQUIRED)
 	public String removeRecipe(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe recipeToRemove = manager.find(Recipe.class, id);
+		if (manager.contains(recipeToRemove)) {
+			manager.remove(recipeToRemove);
+			return "{\"message\": \"Recipe successfully removed\"}";
+		} else {
+			return "{\"message\": \"Cannot find the recipe\"}";
+		}
 	}
 
 	@Override
