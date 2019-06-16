@@ -25,10 +25,11 @@ public class RecipeMapRepository implements RecipeRepository{
 
 	@Override
 	public String createRecipe(String recipe) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe recipeToAdd = util.getObjectForJSON(recipe, Recipe.class);
+		recipeMap.put(recipeToAdd.getRecipeId(), recipeToAdd);
+		return "Recipe successfully added";
 	}
-
+ 
 	@Override
 	public String removeRecipe(int id) {
 		// TODO Auto-generated method stub

@@ -34,10 +34,11 @@ public class RecipeDBRepository implements RecipeRepository {
 		return util.getJSONForObject(manager.find(Recipe.class, id));
 	}
 
-	@Override
+	@Transactional(TxType.REQUIRED)
 	public String createRecipe(String recipe) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe newRecipe = util.getObjectForJSON(recipe, Recipe.class);
+		manager.persist(newRecipe);
+		return "{\"message\": \"recipe successfully added\"}";
 	}
 
 	@Override

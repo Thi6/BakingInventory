@@ -23,7 +23,7 @@ public class IngredientController {
 	public String getAllIngredients() {
 		return ingredientService.getAllIngredients();
 	}
-	
+ 	
 	@Path("/getAnIngredient/{id}")
 	@GET
 	@Produces({"application/json"})

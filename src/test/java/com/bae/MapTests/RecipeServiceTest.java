@@ -52,4 +52,20 @@ public class RecipeServiceTest {
 		rmr.getRecipeMap().put(2, recipe2);
 		assertEquals("{\"recipeId\":1,\"name\":\"Chocolate Chip Cookie\"}", rmr.getARecipe(1));
 	}
+	
+	@Test
+	public void createRecipeTest() {
+		String newRecipe = util.getJSONForObject(recipe1);
+		assertEquals("Recipe successfully added", rmr.createRecipe(newRecipe));
+		assertEquals(1, rmr.getRecipeMap().size());
+	}
+	
+	@Test
+	public void createRecipeTest2( ) {
+		String newRecipe1 = util.getJSONForObject(recipe1);
+		String newRecipe2 = util.getJSONForObject(recipe2);
+		assertEquals("Recipe successfully added", rmr.createRecipe(newRecipe1));
+		assertEquals("Recipe successfully added", rmr.createRecipe(newRecipe2));
+		assertEquals(2, rmr.getRecipeMap().size());
+	}
 }
