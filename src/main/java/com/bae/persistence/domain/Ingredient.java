@@ -21,7 +21,7 @@ public class Ingredient {
 	private int quantity;
 	private int threshold;
 	private String expiryDate;
-	
+ 	
 	public Ingredient() { 
 		
 	}

@@ -12,13 +12,13 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int recipeId;
-	@Column(length = 250)
+	@Column(length = 320)
 	private String name;
 	
 	public Recipe() {
 		
 	} 
-	
+	 
 	public Recipe(int recipeId, String name) {
 		super();
 		this.recipeId = recipeId;

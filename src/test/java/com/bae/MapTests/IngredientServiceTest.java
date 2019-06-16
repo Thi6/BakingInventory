@@ -18,7 +18,7 @@ public class IngredientServiceTest {
 	private Ingredient ing3 = new Ingredient(3, "red food colouring", "decoration", 2, 1, "13/07/2020");
 	private JSONUtil util = new JSONUtil();
 	
-	@Before
+	@Before 
 	public void setup() {
 		imr = new IngredientMapRepository();
 	}
