@@ -13,7 +13,7 @@ public class IngredientMapRepository implements IngredientRepository{
 	
 	private Map<Integer, Ingredient> ingredientMap = new HashMap<Integer, Ingredient>();
 	private JSONUtil util = new JSONUtil();
-	
+	  
 	@Override
 	public String getAllIngredients() {
 		return util.getJSONForObject(ingredientMap);
@@ -61,5 +61,5 @@ public class IngredientMapRepository implements IngredientRepository{
 		}
 		
 	}
-
+ 
 }
