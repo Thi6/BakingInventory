@@ -53,10 +53,18 @@ public class RecipeDBRepository implements RecipeRepository {
 		}
 	}
 
-	@Override
+	@Transactional(TxType.REQUIRED)
 	public String updateRecipe(int id, String recipe) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe recipeToUpdate = manager.find(Recipe.class, id);
+		Recipe updatedRecipe = util.getObjectForJSON(recipe,Recipe.class);
+		if (recipeToUpdate != null) {
+			recipeToUpdate.setName(updatedRecipe.getName());
+			manager.persist(recipeToUpdate);
+			return "{\"message\":\"Recipe successfully updated\"}";
+		} else {
+			return "{\"message\":\"Cannot find the recipe\"}";
+		}
+		
 	}
 
 }

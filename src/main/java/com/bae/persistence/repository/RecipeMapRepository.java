@@ -43,8 +43,14 @@ public class RecipeMapRepository implements RecipeRepository{
 
 	@Override
 	public String updateRecipe(int id, String recipe) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe updatedRecipe = util.getObjectForJSON(recipe, Recipe.class);
+		if (recipeMap.containsKey(id)) {
+			recipeMap.replace(id, updatedRecipe);
+			return "Recipe successfully updated";
+		} else {
+			return "Cannot find the recipe";
+		}
+		
 	}
 
 	public Map<Integer, Recipe> getRecipeMap() {

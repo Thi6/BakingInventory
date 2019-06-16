@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.bae.persistence.domain.Recipe;
 import com.bae.persistence.repository.RecipeMapRepository;
 import com.bae.util.JSONUtil;
-
+ 
 public class RecipeServiceTest {
 	private RecipeMapRepository rmr;
 	private Recipe recipe1 = new Recipe(1, "Chocolate Chip Cookie");
@@ -97,6 +97,13 @@ public class RecipeServiceTest {
 		assertEquals(false, rmr.getRecipeMap().containsKey(1));
 		rmr.removeRecipe(3);
 		assertEquals(false, rmr.getRecipeMap().containsKey(3));
+	}
+	
+	@Test
+	public void updateRecipeTest() {
+		rmr.getRecipeMap().put(1, recipe1);
+		rmr.updateRecipe(1, "{\"recipeId\":1,\"name\":\"Triple Chocolate Cookie\"}");
+		assertEquals("Triple Chocolate Cookie", rmr.getRecipeMap().get(1).getName());
 	}
 	
 }

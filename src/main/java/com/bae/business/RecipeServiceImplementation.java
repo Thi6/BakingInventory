@@ -3,7 +3,7 @@ package com.bae.business;
 import javax.inject.Inject;
 
 import com.bae.persistence.repository.RecipeRepository;
-
+ 
 public class RecipeServiceImplementation implements RecipeService{
 
 	@Inject
@@ -27,6 +27,11 @@ public class RecipeServiceImplementation implements RecipeService{
 	@Override
 	public String removeRecipe(int id) {
 		return recipeRepo.removeRecipe(id);
+	}
+
+	@Override
+	public String updateRecipe(int id, String recipe) {
+		return recipeRepo.updateRecipe(id, recipe);
 	}
 
 }
