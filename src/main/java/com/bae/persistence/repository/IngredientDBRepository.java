@@ -22,7 +22,7 @@ public class IngredientDBRepository implements IngredientRepository{
 	
 	@Inject
 	private JSONUtil util;
-	
+	 
 
 	public String getAllIngredients() {
 		TypedQuery<Ingredient> query = manager.createQuery("SELECT i FROM Ingredient i", Ingredient.class);

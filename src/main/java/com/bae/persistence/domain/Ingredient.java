@@ -16,6 +16,7 @@ public class Ingredient {
 	private int ingredientId;
 	@Column(length = 250)
 	private String name;
+	@Column(length = 250)
 	private String category;
 	private int quantity;
 	private int threshold;
