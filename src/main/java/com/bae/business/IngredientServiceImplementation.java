@@ -10,7 +10,7 @@ public class IngredientServiceImplementation implements IngredientService {
 	
 	@Inject
 	IngredientRepository ingredientRepo;
-	
+ 	
 	
 	@Override 
 	public String getAllIngredients() {
