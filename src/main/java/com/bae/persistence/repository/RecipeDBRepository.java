@@ -1,10 +1,16 @@
 package com.bae.persistence.repository;
 
-public class RecipeDBRepository implements RecipeRepository {
+import javax.enterprise.inject.Default;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
+@Transactional(TxType.SUPPORTS)
+@Default
+public class RecipeDBRepository implements RecipeRepository {
+	
 	@Override
 	public String getAllRecipes() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

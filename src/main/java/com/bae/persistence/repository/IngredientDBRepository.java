@@ -16,14 +16,14 @@ import com.bae.util.JSONUtil;
 @Transactional(TxType.SUPPORTS)
 @Default
 public class IngredientDBRepository implements IngredientRepository{
-	
+	 
 	@PersistenceContext(unitName = "primary")
 	EntityManager manager;
 	
 	@Inject
 	private JSONUtil util;
 	 
-
+ 
 	public String getAllIngredients() {
 		TypedQuery<Ingredient> query = manager.createQuery("SELECT i FROM Ingredient i", Ingredient.class);
 		Collection<Ingredient> ingredients = query.getResultList();
