@@ -9,7 +9,10 @@ public class TestConstants {
 	
 	public static final String TEST_INGR1_STR = "{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":10,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}";
 	public static final String TEST_UPDATED_INGR1_STR = "{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":100,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}";
-	public static final String MOCK_DATA_ARRAY = "[{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":10,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}]";
+	public static final String MOCK_DATA_ARRAY_INGR = "[{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":10,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}]";
 	
+	public static final String MOCK_DATA_ARRAY_RECIPE = "[{\"recipeId\":1,\"name\":\"Chocolate Chip Cookie\"}]";
+	public static final String TEST_RECIPE1_STR = "{\"recipeId\":1,\"name\":\"Chocolate Chip Cookie\"}";
+	public static final String TEST_UPDATED_RECIPE1_STR = "{\"recipeId\":1,\"name\":\"Brownies\"}";
 	public static final String ADD_INGR_SUCCESSFUL = "Ingredient successfully added";
 }

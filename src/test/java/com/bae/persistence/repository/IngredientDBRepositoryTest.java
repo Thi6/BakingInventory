@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -52,12 +51,12 @@ public class IngredientDBRepositoryTest {
 	}
 	
 	@Test
-	public void testGetAllIngredientsTest() {
+	public void testGetAllIngredients() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Ingredient> ingredientList = new ArrayList<>();
 		ingredientList.add(ingr1);
 		Mockito.when(query.getResultList()).thenReturn(ingredientList);
-		Assert.assertEquals(TestConstants.MOCK_DATA_ARRAY, ingredientRepo.getAllIngredients());
+		Assert.assertEquals(TestConstants.MOCK_DATA_ARRAY_INGR, ingredientRepo.getAllIngredients());
 	}
 	
 	@Test
