@@ -52,14 +52,14 @@ public class IngredientServiceTest {
 	@Test
 	public void addIngredientTest() {
 		String newIngr = util.getJSONForObject(TestConstants.INGREDIENT_1);
-		assertEquals("Ingredient successfully added", imr.addIngredient(newIngr));
+		assertEquals(TestConstants.ADD_INGR_SUCCESSFUL, imr.addIngredient(newIngr));
 		assertEquals(1, imr.getIngredientMap().size());
 	}
 	
 	@Test
 	public void addIngredientTest2() {
-		assertEquals("Ingredient successfully added", imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_1)));
-		assertEquals("Ingredient successfully added", imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_2)));
+		assertEquals(TestConstants.ADD_INGR_SUCCESSFUL, imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_1)));
+		assertEquals(TestConstants.ADD_INGR_SUCCESSFUL, imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_2)));
 		assertEquals(2, imr.getIngredientMap().size());
 	}
 	

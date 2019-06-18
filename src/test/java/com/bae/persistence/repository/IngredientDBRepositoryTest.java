@@ -40,26 +40,29 @@ public class IngredientDBRepositoryTest {
 	
 	private JSONUtil util;
 	
+	private Ingredient ingr1;
+	
 	
 	@Before
 	public void setup() {
 		ingredientRepo.setManager(manager);
 		util = new JSONUtil();
 		ingredientRepo.setUtil(util);
+		ingr1 = new Ingredient(1, "plain flour", "pantry", 10, 5, "13/06/2019");
 	}
 	
 	@Test
 	public void testGetAllIngredientsTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Ingredient> ingredientList = new ArrayList<>();
-		ingredientList.add(TestConstants.INGREDIENT_1);
+		ingredientList.add(ingr1);
 		Mockito.when(query.getResultList()).thenReturn(ingredientList);
 		Assert.assertEquals(TestConstants.MOCK_DATA_ARRAY, ingredientRepo.getAllIngredients());
 	}
 	
 	@Test
 	public void testGetAnIngredient() {
-		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(TestConstants.INGREDIENT_1);
+		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(ingr1);
 		Assert.assertEquals(TestConstants.TEST_INGR1_STR, ingredientRepo.getAnIngredient(1));
 	}
 	
@@ -71,14 +74,14 @@ public class IngredientDBRepositoryTest {
 	
 	@Test
 	public void testRemoveIngredientDoesExist() {
-		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(TestConstants.INGREDIENT_1);
-		Mockito.when(manager.contains(TestConstants.INGREDIENT_1)).thenReturn(true);
+		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(ingr1);
+		Mockito.when(manager.contains(ingr1)).thenReturn(true);
 		String reply = ingredientRepo.removeIngredient(1);
 		Assert.assertEquals("{\"message\": \"ingredient successfully deleted\"}", reply);
 		
 	}
 	
-
+ 
 	@Test
 	public void testRemoveIngredientDoesntExist() {
 		String reply = ingredientRepo.removeIngredient(100);
@@ -87,7 +90,7 @@ public class IngredientDBRepositoryTest {
 	
 	@Test
 	public void testUpdateIngredientDoesExist() {
-		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(TestConstants.INGREDIENT_1);
+		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(ingr1);
 		String reply = ingredientRepo.updateIngredient(1, TestConstants.TEST_UPDATED_INGR1_STR);
 		Assert.assertEquals("{\"message\": \"ingredient successfully updated\"}", reply);
 	}

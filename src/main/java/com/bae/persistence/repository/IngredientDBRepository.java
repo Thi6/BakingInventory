@@ -37,7 +37,7 @@ public class IngredientDBRepository implements IngredientRepository{
 		return util.getJSONForObject(manager.find(Ingredient.class, id));
 	}
 
-
+ 
 	@Transactional(TxType.REQUIRED)
 	public String addIngredient(String ingredient) {
 		Ingredient newIngr = util.getObjectForJSON(ingredient, Ingredient.class);
