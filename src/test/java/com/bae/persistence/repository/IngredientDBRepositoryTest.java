@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -58,11 +59,43 @@ public class IngredientDBRepositoryTest {
 	
 	@Test
 	public void testGetAnIngredient() {
-		
+		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(TestConstants.INGREDIENT_1);
+		Assert.assertEquals(TestConstants.TEST_INGR1_STR, ingredientRepo.getAnIngredient(1));
 	}
 	
 	@Test
 	public void testAddIngredient() {
+		String reply = ingredientRepo.addIngredient(TestConstants.TEST_INGR1_STR);
+		Assert.assertEquals("{\"message\": \"ingredient has been sucessfully added\"}", reply);
+	}
+	
+	@Test
+	public void testRemoveIngredientDoesExist() {
+		Mockito.when(manager.find(Ingredient.class, 1)).thenReturn(TestConstants.INGREDIENT_1);
+		Mockito.when(manager.contains(TestConstants.INGREDIENT_1)).thenReturn(true);
+		String reply = ingredientRepo.removeIngredient(1);
+		Assert.assertEquals("{\"message\": \"ingredient successfully deleted\"}", reply);
 		
+	}
+	
+
+	@Test
+	public void testRemoveIngredientDoesntExist() {
+		String reply = ingredientRepo.removeIngredient(100);
+		Assert.assertEquals("{\"message\": \"cannot find this ingredient\"}", reply);
+	}
+	
+	@Test
+	public void testUpdateIngredientDoesExist() {
+		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(TestConstants.INGREDIENT_1);
+		String reply = ingredientRepo.updateIngredient(1, TestConstants.TEST_UPDATED_INGR1_STR);
+		Assert.assertEquals("{\"message\": \"ingredient successfully updated\"}", reply);
+	}
+	
+	
+	@Test
+	public void testUpdateIngredientDoesntExist() {
+		String reply = ingredientRepo.updateIngredient(10, TestConstants.TEST_UPDATED_INGR1_STR);
+		Assert.assertEquals("{\"message\": \"cannot find this ingredient\"}", reply);
 	}
 }

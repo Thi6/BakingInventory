@@ -46,7 +46,7 @@ public class IngredientServiceTest {
 	public void getAnIngredientTest() {
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
 		imr.getIngredientMap().put(2, TestConstants.INGREDIENT_2);
-		assertEquals(TestConstants.JSON_STRING_INGR1, imr.getAnIngredient(1));
+		assertEquals(TestConstants.TEST_INGR1_STR, imr.getAnIngredient(1));
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class IngredientServiceTest {
 	@Test
 	public void updateIngredientTest() {
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
-		imr.updateIngredient(1, "{\"ingredientId\":1,\"name\":\"plain flour\",\"category\":\"pantry\",\"quantity\":100,\"threshold\":5,\"expiryDate\":\"13/06/2019\"}");
+		imr.updateIngredient(1, TestConstants.TEST_UPDATED_INGR1_STR);
 		assertEquals(100, imr.getIngredientMap().get(1).getQuantity()); 
 	}
 	

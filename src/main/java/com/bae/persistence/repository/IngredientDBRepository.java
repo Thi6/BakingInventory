@@ -71,7 +71,7 @@ public class IngredientDBRepository implements IngredientRepository{
 			manager.persist(ingrToUpdate);
 			return "{\"message\": \"ingredient successfully updated\"}";
 		} else {
-			return "{\"message\": \"cannot find ingredient\"}";
+			return "{\"message\": \"cannot find this ingredient\"}";
 		}
 		
 	}
