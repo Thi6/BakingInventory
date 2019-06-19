@@ -1,4 +1,4 @@
-package com.bae.MapTests;
+package com.bae.persistence.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -57,21 +57,22 @@ public class IngredientServiceTest {
 	}
 	
 	@Test
-	public void addIngredientTest2() {
+	public void addTwoIngredientsTest() {
 		assertEquals(TestConstants.ADD_INGR_SUCCESSFUL, imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_1)));
 		assertEquals(TestConstants.ADD_INGR_SUCCESSFUL, imr.addIngredient(util.getJSONForObject(TestConstants.INGREDIENT_2)));
 		assertEquals(2, imr.getIngredientMap().size());
 	}
 	
 	@Test
-	public void removeIngredientTest() {
+	public void removeIngredientDoesExistTest() {
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
 		imr.removeIngredient(1);
 		assertEquals(false, imr.getIngredientMap().containsKey(1));
 	}
 	
 	@Test
-	public void removeIngredientTest2() {
+	public void removeTwoIngredientsTest() {
+		
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
 		imr.getIngredientMap().put(2, TestConstants.INGREDIENT_2);
 		imr.getIngredientMap().put(3, TestConstants.INGREDIENT_3);
@@ -84,7 +85,7 @@ public class IngredientServiceTest {
 	} 
 	
 	@Test
-	public void removeIngredientTest3() {
+	public void removeOneIngrExistsOneDoesntExistTest() {
 		//remove one ingredient that exists and one that doesn't
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
 		imr.getIngredientMap().put(2, TestConstants.INGREDIENT_2);
@@ -94,12 +95,20 @@ public class IngredientServiceTest {
 		imr.removeIngredient(3);
 		assertEquals(false, imr.getIngredientMap().containsKey(3));
 	} 
+	
+	
 	 
 	@Test
-	public void updateIngredientTest() {
+	public void updateIngredientDoesExistTest() {
 		imr.getIngredientMap().put(1, TestConstants.INGREDIENT_1);
 		imr.updateIngredient(1, TestConstants.TEST_UPDATED_INGR1_STR);
 		assertEquals(100, imr.getIngredientMap().get(1).getQuantity()); 
+	}
+	
+	@Test
+	public void updateIngredientDoesntExistTest() {
+		assertEquals("Cannot find ingredient", imr.updateIngredient(1, TestConstants.TEST_UPDATED_INGR1_STR));
+		
 	}
 	
 	 
