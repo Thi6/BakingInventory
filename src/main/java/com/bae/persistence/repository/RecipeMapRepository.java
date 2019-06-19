@@ -35,7 +35,7 @@ public class RecipeMapRepository implements RecipeRepository{
 		
 		if (recipeMap.containsKey(id)) {
 			recipeMap.remove(id);
-			return "Recipe successfully removec";
+			return "Recipe successfully removed";
 		} else {
 			return "Cannot find the recipe";
 		}
@@ -58,8 +58,6 @@ public class RecipeMapRepository implements RecipeRepository{
 		return recipeMap;
 	}
 
-	public void setRecipeMap(Map<Integer, Recipe> recipeMap) {
-		this.recipeMap = recipeMap;
-	}
+	
 	
 }

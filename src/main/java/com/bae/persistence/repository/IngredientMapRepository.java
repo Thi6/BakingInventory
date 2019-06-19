@@ -34,11 +34,12 @@ public class IngredientMapRepository implements IngredientRepository{
 
 	@Override
 	public String removeIngredient(int id) {
-		ingredientMap.remove(id);
+		
 		if (ingredientMap.containsKey(id)) {
-			return "Ingredient has not been removed";
+			ingredientMap.remove(id);
+			return "Ingredient successfully removed";
 		} else {
-			return "Ingredient has been removed";
+			return "Cannot find ingredient";
 		}
 		
 	}
@@ -46,9 +47,6 @@ public class IngredientMapRepository implements IngredientRepository{
 		return ingredientMap;
 	}
 
-	public void setIngredientMap(Map<Integer, Ingredient> ingredientMap) {
-		this.ingredientMap = ingredientMap;
-	}
 
 	@Override
 	public String updateIngredient(int id, String ingredient) {

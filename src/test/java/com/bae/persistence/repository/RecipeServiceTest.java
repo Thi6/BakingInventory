@@ -100,6 +100,10 @@ public class RecipeServiceTest {
 		assertEquals(false, rmr.getRecipeMap().containsKey(3));
 	}
 	
+	@Test
+	public void removeRecipeDoesntExistTest() {
+		assertEquals("Cannot find the recipe", rmr.removeRecipe(23));
+	}
 		
 	@Test
 	public void updateRecipeDoesExistTest() {

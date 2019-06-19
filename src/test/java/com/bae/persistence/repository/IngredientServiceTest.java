@@ -96,6 +96,10 @@ public class IngredientServiceTest {
 		assertEquals(false, imr.getIngredientMap().containsKey(3));
 	} 
 	
+	@Test
+	public void removeIngredientDoesntExist() {
+		assertEquals("Cannot find ingredient", imr.removeIngredient(3245));
+	}
 	
 	 
 	@Test
