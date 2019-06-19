@@ -32,11 +32,12 @@ public class RecipeMapRepository implements RecipeRepository{
  
 	@Override
 	public String removeRecipe(int id) {
-		recipeMap.remove(id);
+		
 		if (recipeMap.containsKey(id)) {
-			return "Recipe has not been removed";
+			recipeMap.remove(id);
+			return "Recipe successfully removec";
 		} else {
-			return "Recipe successfully removed";
+			return "Cannot find the recipe";
 		}
 		
 	}
