@@ -36,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp target/BakingInventory.war /home/thi.dnguyen96/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp /var/lib/jenkins/workspace/soloproject/target/BakingInventory.war /home/thi.dnguyen96/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
