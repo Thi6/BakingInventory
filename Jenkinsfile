@@ -39,5 +39,10 @@ pipeline{
 				sh "sudo cp /var/lib/jenkins/workspace/soloproject/target/BakingInventory.war /home/thi_dnguyen96/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
+		stage('--email--'){
+                        steps{
+                                emailext attachLog: true, attachmentsPattern: 'target/site/jacoco/index.html, target/site/surefire-report.html', body: '', subject: '', to: 'thi.dnguyen96@gmail.com'
+                        }
+                }
         }
 }
