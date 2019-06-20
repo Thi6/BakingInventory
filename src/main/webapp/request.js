@@ -1,7 +1,7 @@
-// const ipAddress = "34.77.214.205:8888";
+const ipAddress = "35.228.193.58:8888";
 
 //ip address for local host
-const ipAddress = "localhost:8080";
+// const ipAddress = "localhost:8080";
 
 const makeRequest = (method, url, body) => {
 
