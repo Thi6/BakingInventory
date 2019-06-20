@@ -19,9 +19,7 @@ const makeRequest = (method, url, body) => {
         }
         req.open(method, url);
         req.send(body);
-    }
-    
-    );
+    });
 }
 
 const getRecipes = () => {

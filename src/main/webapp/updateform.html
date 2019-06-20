@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body onload="autofillValues()">
+    <div>
+        Name:
+        <input id="updateName" type="text">
+        <br>
+        Category:
+        <select id="updateCategory">
+            <option value="pantry">Pantry</option>
+            <option value="fridge">Fridge</option>
+            <option value="freezer">Freezer</option>
+            <option value="decoration">Decoration</option>
+        </select>
+        <br>
+        Quantity:
+        <input id="updateQuantity" type="number">
+        <br>
+        Threshold:
+        <input id="updateThreshold" type="number">
+        <br>
+        Expiry date:
+        <input id="updateExpiryDate" type="text">
+        <input type="button" value="Update" onclick="updateIngredient()">
+    </div>
+
+    <div>
+        <input type="button" value="Back" onclick="backButtonHandler()">
+    </div>
+
+
+    <script src="request.js"></script>
+    <script src="updateform.js"></script>
+    
+</body>
+
+</html>
