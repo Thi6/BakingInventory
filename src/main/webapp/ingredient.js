@@ -1,44 +1,42 @@
 
 const getAllIngredients = () => {
-    // removes any existing tables
+    
     const tableContainer = document.getElementById('ingredientTable');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
     makeRequest("GET", "http://" + ipAddress + "/BakingInventory/api/ingredient/getAllIngredients")
         .then((req) => {
             let data = JSON.parse(req.responseText);
-            console.log(data);
-            console.log(data[0].name);
-
+           
             const tableContainer = document.getElementById('ingredientTable');
             tableContainer.className = "table table-hover"; //bootstrap
 
             // creating table rows and adding data into the rows
-            for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data.length; j++) {
                 let aRow = document.createElement('tr')
                 tableContainer.appendChild(aRow);
 
                 let anIngredientId = document.createElement('td');
-                anIngredientId.innerHTML = data[i].ingredientId;
+                anIngredientId.innerHTML = data[j].ingredientId;
                 let aName = document.createElement('td');
-                aName.innerHTML = data[i].name;
+                aName.innerHTML = data[j].name;
                 let aCategory = document.createElement('td');
-                aCategory.innerHTML = data[i].category;
+                aCategory.innerHTML = data[j].category;
                 let aQuantity = document.createElement('td');
-                aQuantity.innerHTML = data[i].quantity;
+                aQuantity.innerHTML = data[j].quantity;
                 let aThreshold = document.createElement('td');
-                aThreshold.innerHTML = data[i].threshold;
+                aThreshold.innerHTML = data[j].threshold;
                 let anExpiryDate = document.createElement('td');
-                anExpiryDate.innerHTML = data[i].expiryDate;
+                anExpiryDate.innerHTML = data[j].expiryDate;
 
                 let anUpdate = document.createElement('td');
                 let updateButton = document.createElement('button');
 
-                updateButton.id = data[i].name;
+                updateButton.id = data[j].name;
                 updateButton.innerText = "Update";
 
                 updateButton.addEventListener("click", buttonClick = () => {
@@ -77,7 +75,7 @@ const getAnIngredient = () => {
     const tableContainer = document.getElementById('ingredientTable');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -87,12 +85,8 @@ const getAnIngredient = () => {
 
     makeRequest("GET", "http://" + ipAddress + "/BakingInventory/api/ingredient/getAnIngredient/" + ingredientToSearch)
         .then((req) => {
-            data = JSON.parse(req.responseText);
-            console.log(data);
-            console.log(data.name);
-            if (data === null) {
-                document.getElementById("aMessage").innerHTML = "Ingredient not found!";
-            }
+            let data = JSON.parse(req.responseText);
+         
             const tableContainer = document.getElementById('ingredientTable');
             tableContainer.className = "table table-hover";
 

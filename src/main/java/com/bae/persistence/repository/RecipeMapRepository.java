@@ -10,27 +10,27 @@ import com.bae.util.JSONUtil;
 
 @Alternative
 public class RecipeMapRepository implements RecipeRepository{
-	private Map<Integer, Recipe> recipeMap = new HashMap<Integer, Recipe>();
+	private Map<Integer, Recipe> recipeMap = new HashMap<>();
 	private JSONUtil util = new JSONUtil();
 	
-	@Override
+	
 	public String getAllRecipes() {
 		return util.getJSONForObject(recipeMap);
 	}
 
-	@Override 
+	 
 	public String getARecipe(int id) {
 		return  util.getJSONForObject(recipeMap.get(id));
 	}
 
-	@Override
+	
 	public String createRecipe(String recipe) {
 		Recipe recipeToAdd = util.getObjectForJSON(recipe, Recipe.class);
 		recipeMap.put(recipeToAdd.getRecipeId(), recipeToAdd);
 		return "Recipe successfully added";
 	}
  
-	@Override
+
 	public String removeRecipe(int id) {
 		
 		if (recipeMap.containsKey(id)) {
@@ -42,7 +42,7 @@ public class RecipeMapRepository implements RecipeRepository{
 		
 	}
 
-	@Override
+	
 	public String updateRecipe(int id, String recipe) {
 		Recipe updatedRecipe = util.getObjectForJSON(recipe, Recipe.class);
 		if (recipeMap.containsKey(id)) {

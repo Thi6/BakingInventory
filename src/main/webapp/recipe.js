@@ -4,7 +4,7 @@ const getRecipes = () => {
     const tableContainer = document.getElementById('recipeTable');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -19,22 +19,22 @@ const getRecipes = () => {
             tableContainer.className = "table table-hover"; //bootstrap
 
             // creating table rows and adding data into the rows
-            for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data.length; j++) {
                 let aRow = document.createElement('tr')
                 tableContainer.appendChild(aRow);
 
                 let aRecipeId = document.createElement('td');
-                aRecipeId.innerHTML = data[i].recipeId;
+                aRecipeId.innerHTML = data[j].recipeId;
                 let aName = document.createElement('td');
-                aName.innerHTML = data[i].name;
+                aName.innerHTML = data[j].name;
 
                   
                 let editName = document.createElement('input');
-                editName.id = data[i].name + "text";
+                editName.id = data[j].name + "text";
                 editName.type = "text";
                 
                 let editButton = document.createElement('button');
-                editButton.id = data[i].name;
+                editButton.id = data[j].name;
                 editButton.innerText = "Edit Recipe Name";
 
                 editButton.addEventListener("click", buttonClick = () => {
@@ -63,7 +63,7 @@ const getRecipe = () => {
     const tableContainer = document.getElementById('recipeTable');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -71,9 +71,8 @@ const getRecipe = () => {
 
     makeRequest("GET", "http://" + ipAddress + "/BakingInventory/api/recipe/getARecipe/" + recipeToSearch)
         .then((req) => {
-            data = JSON.parse(req.responseText);
-            console.log(data);
-            console.log(data.name);
+            let data = JSON.parse(req.responseText);
+         
             const tableContainer = document.getElementById('recipeTable');
             ////
             tableContainer.className = "table table-hover";
@@ -93,7 +92,7 @@ const getRecipe = () => {
             editName.id = data.name + "text";
             editName.type = "text";
             
-            let anEdit = document.createElement('td');
+           
             let editButton = document.createElement('button');
             editButton.id = data.name;
             editButton.innerText = "Edit Recipe Name";
