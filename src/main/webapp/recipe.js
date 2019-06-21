@@ -14,6 +14,7 @@ const getRecipes = () => {
             let data = JSON.parse(req.responseText);
             console.log(data);
             console.log(data[0].name);
+            console.log(req.responseText);
 
             const tableContainer = document.getElementById('recipeTable');
             tableContainer.className = "table table-hover"; //bootstrap
