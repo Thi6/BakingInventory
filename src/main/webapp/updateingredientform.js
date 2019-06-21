@@ -27,7 +27,7 @@ const updateIngredient = () => {
     makeRequest("PUT", "http://" + ipAddress + "/BakingInventory/api/ingredient/updateIngredient/" + ingredientToUpdate, JSON.stringify(ingrObject))
         .then((req) => {
             console.log(req.responseText);
-
+            document.getElementById("message").innerText = "Ingredient " + ingredientToUpdate + " has been successfully updated!";
         })
         .catch((error) => { console.log(error.message) })
 

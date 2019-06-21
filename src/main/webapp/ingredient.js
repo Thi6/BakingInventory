@@ -40,6 +40,7 @@ const getAllIngredients = () => {
 
                 updateButton.id = data[i].name;
                 updateButton.innerText = "Update";
+
                 updateButton.addEventListener("click", buttonClick = () => {
                     sessionStorage.setItem('id', anIngredientId.innerHTML);
                     sessionStorage.setItem('name', aName.innerHTML);
@@ -48,7 +49,7 @@ const getAllIngredients = () => {
                     sessionStorage.setItem('threshold', aThreshold.innerHTML);
                     sessionStorage.setItem('expirydate', anExpiryDate.innerHTML);
 
-                    window.location.href = "updateform.html";
+                    window.location.href = "updateingredientform.html";
 
                 });
 
@@ -81,12 +82,17 @@ const getAnIngredient = () => {
         }
     }
 
+    document.getElementById("aMessage").innerText.replace("");
+
 
     makeRequest("GET", "http://" + ipAddress + "/BakingInventory/api/ingredient/getAnIngredient/" + ingredientToSearch)
         .then((req) => {
             data = JSON.parse(req.responseText);
             console.log(data);
             console.log(data.name);
+            if (data === null) {
+                document.getElementById("aMessage").innerHTML = "Ingredient not found!";
+            }
             const tableContainer = document.getElementById('ingredientTable');
             tableContainer.className = "table table-hover";
 
@@ -106,12 +112,35 @@ const getAnIngredient = () => {
             let anExpiryDate = document.createElement('td');
             anExpiryDate.innerHTML = data.expiryDate;
 
+            
+            let anUpdate = document.createElement('td');
+            let updateButton = document.createElement('button');
+
+            updateButton.id = data.name;
+            updateButton.innerText = "Update";
+
+            updateButton.addEventListener("click", buttonClick = () => {
+                sessionStorage.setItem('id', anIngredientId.innerHTML);
+                sessionStorage.setItem('name', aName.innerHTML);
+                sessionStorage.setItem('category', aCategory.innerHTML);
+                sessionStorage.setItem('quantity', aQuantity.innerHTML);
+                sessionStorage.setItem('threshold', aThreshold.innerHTML);
+                sessionStorage.setItem('expirydate', anExpiryDate.innerHTML);
+
+                window.location.href = "updateingredientform.html";
+
+            });
+
             aRow.appendChild(anIngredientId);
             aRow.appendChild(aName);
             aRow.appendChild(aCategory);
             aRow.appendChild(aQuantity);
             aRow.appendChild(aThreshold);
             aRow.appendChild(anExpiryDate);
+            aRow.appendChild(updateButton);
+
+           
+          
         })
         .catch((error) => { console.log(error.message) });
 
@@ -139,6 +168,7 @@ const addIngredient = () => {
         .then((req) => {
             getAllIngredients();
             console.log(ingrJSON);
+            document.getElementById("aMessage").innerText = ingrName + " has been added";
         })
         .catch((error) => { console.log(error.message) });
 
