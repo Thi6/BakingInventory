@@ -113,10 +113,9 @@ const getAnIngredient = () => {
             anExpiryDate.innerHTML = data.expiryDate;
 
             
-            let anUpdate = document.createElement('td');
             let updateButton = document.createElement('button');
-
-            updateButton.id = data.name;
+            
+            updateButton.id = data.name; 
             updateButton.innerText = "Update";
 
             updateButton.addEventListener("click", buttonClick = () => {

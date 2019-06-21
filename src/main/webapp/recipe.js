@@ -33,8 +33,6 @@ const getRecipes = () => {
                 editName.id = data[i].name + "text";
                 editName.type = "text";
                 
-
-                let anEdit = document.createElement('td');
                 let editButton = document.createElement('button');
                 editButton.id = data[i].name;
                 editButton.innerText = "Edit Recipe Name";
