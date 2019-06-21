@@ -88,8 +88,28 @@ const getRecipe = () => {
             let aName = document.createElement('td');
             aName.innerHTML = data.name;
 
+
+
+            let changeName = document.createElement('td');
+            let editName = document.createElement('input');
+            editName.id = data.name + "text";
+            editName.type = "text";
+            
+            let anEdit = document.createElement('td');
+            let editButton = document.createElement('button');
+            editButton.id = data.name;
+            editButton.innerText = "Edit Recipe Name";
+
+            editButton.addEventListener("click", buttonClick = () => {
+                document.getElementById('idRecipe').value =  aRecipeId.innerHTML;
+                document.getElementById('recipeName').value =  editName.value;
+                updateRecipe();
+            });
+
             aRow.appendChild(aRecipeId);
             aRow.appendChild(aName);
+            aRow.appendChild(editName);
+            aRow.appendChild(editButton);
 
         })
         .catch((error) => { console.log(error.message) });
