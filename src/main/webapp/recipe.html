@@ -18,7 +18,7 @@
             </button> -->
         <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="index.html">Home </a>
+            <a class="nav-item nav-link active" href="index.html">Home</a>
             <a class="nav-item nav-link" href="ingredient.html">Ingredients</a>
             <a class="nav-item nav-link" href="recipe.html">Recipes</a>
         </div>
@@ -26,33 +26,34 @@
     </nav>
 
 
-    <div class="container row">
+    <div class="container">
 
-        <div class="col">
-            <div class="form-group row">
+        <div class="row">
+            <div class="form-group col-4">
                 <input id="idRecipe" class="form-control" type="number" placeholder="Recipe #">
             </div>
-            <div class="col"> 
-                <input type="button" value="Search" onclick="getRecipe()">
-            </div>
             <div class="col">
+                <input type="button" value="Search" onclick="getRecipe()">
+
                 <input type="button" value="Remove" onclick="removeRecipe()">
             </div>
         </div>
 
 
-        <div class="col form-group">
+        <div class="row form-group">
 
-            <input id="recipeName" class="form-control" type="text" placeholder="Name of recipe">
-            <input type="button" value="Add" onclick="addRecipe()">
+            <div class="col-4">
+                <input id="recipeName" class="form-control" type="text" placeholder="Name of recipe">
+            </div>
+
+            <div class="col">
+                <input type="button" value="Add" onclick="addRecipe()">
+            </div>
+
 
         </div>
 
     </div>
-
-
-
-
 
 
     <div class="container">
@@ -63,7 +64,6 @@
         <table id="recipeTable">
             <th>Id</th>
             <th>Name</th>
-            <th></th>
             <th>Edit Recipe</th>
         </table>
     </div>

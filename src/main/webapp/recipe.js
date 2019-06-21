@@ -28,28 +28,35 @@ const getRecipes = () => {
                 let aName = document.createElement('td');
                 aName.innerHTML = data[i].name;
 
-                let anUpdate = document.createElement('td');
+                let changeName = document.createElement('td');
+                let editName = document.createElement('input');
+                editName.id = data[i].name + "text";
+                editName.type = "text";
+                
 
+                let anEdit = document.createElement('td');
                 let editButton = document.createElement('button');
-
-                editButton.id = data[0].name;
+                editButton.id = data[i].name;
                 editButton.innerText = "Edit Recipe Name";
 
                 editButton.addEventListener("click", buttonClick = () => {
-                    sessionStorage.setItem('name', aName.HTML);
-                    window.location.href = "#";
+                    document.getElementById('idRecipe').value =  aRecipeId.innerHTML;
+                    document.getElementById('recipeName').value =  editName.value;
+                    updateRecipe();
                 });
 
 
 
                 aRow.appendChild(aRecipeId);
                 aRow.appendChild(aName);
+                aRow.appendChild(editName);
                 aRow.appendChild(editButton);
             }
         })
         .catch((error) => { console.log(error.message) });
 
 }
+
 
 const getRecipe = () => {
     let recipeToSearch = document.getElementById('idRecipe').value;
@@ -126,7 +133,7 @@ const updateRecipe = () => {
         name: recipeName,
     }
 
-
+    console.log(JSON.stringify(recipeObject));
     makeRequest("PUT", "http://" + ipAddress + "/BakingInventory/api/recipe/updateRecipe/" + recipeToUpdate, JSON.stringify(recipeObject))
         .then((req) => {
             getRecipes();
