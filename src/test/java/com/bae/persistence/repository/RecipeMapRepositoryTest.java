@@ -1,4 +1,4 @@
-package com.bae.MapTests;
+package com.bae.persistence.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,8 +8,9 @@ import org.junit.Test;
 import com.bae.persistence.domain.Recipe;
 import com.bae.persistence.repository.RecipeMapRepository;
 import com.bae.util.JSONUtil;
+import com.bae.util.TestConstants;
  
-public class RecipeServiceTest {
+public class RecipeMapRepositoryTest {
 	private RecipeMapRepository rmr;
 	private Recipe recipe1 = new Recipe(1, "Chocolate Chip Cookie");
 	private Recipe recipe2 = new Recipe(2, "Carrot Cake");
@@ -22,12 +23,12 @@ public class RecipeServiceTest {
 	}
 	
 	@Test
-	public void getAllRecipesTest() {
+	public void getAllRecipesEmptyTest() {
 		assertEquals("{}", rmr.getAllRecipes());
 	}
 	
 	@Test
-	public void getAllRecipesTest2() {
+	public void getAllRecipesNotEmptyTest() {
 		rmr.getRecipeMap().put(1, recipe1);
 		assertEquals("{\"1\":{\"recipeId\":1,\"name\":\"Chocolate Chip Cookie\"}}", rmr.getAllRecipes());
 	}
@@ -100,10 +101,21 @@ public class RecipeServiceTest {
 	}
 	
 	@Test
-	public void updateRecipeTest() {
+	public void removeRecipeDoesntExistTest() {
+		assertEquals("Cannot find the recipe", rmr.removeRecipe(23));
+	}
+		
+	@Test
+	public void updateRecipeDoesExistTest() {
 		rmr.getRecipeMap().put(1, recipe1);
 		rmr.updateRecipe(1, "{\"recipeId\":1,\"name\":\"Triple Chocolate Cookie\"}");
 		assertEquals("Triple Chocolate Cookie", rmr.getRecipeMap().get(1).getName());
 	}
+	
+	@Test
+	public void updateRecipeDoesntExistTest() {
+		assertEquals("Cannot find the recipe", rmr.updateRecipe(1123, TestConstants.TEST_UPDATED_RECIPE1_STR)); 
+	}
+	
 	
 }

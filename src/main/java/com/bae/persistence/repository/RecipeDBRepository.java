@@ -1,12 +1,12 @@
 package com.bae.persistence.repository;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
@@ -16,20 +16,21 @@ import com.bae.util.JSONUtil;
 @Transactional(TxType.SUPPORTS)
 @Default
 public class RecipeDBRepository implements RecipeRepository {
+	
 	@PersistenceContext(unitName = "primary")
 	EntityManager manager;
 	
 	@Inject
 	private JSONUtil util;
 	
-	@Override
+	
 	public String getAllRecipes() {
-		TypedQuery<Recipe> query = manager.createQuery("SELECT r FROM Recipe r", Recipe.class);
-		Collection<Recipe> recipes = query.getResultList();
+		Query query = manager.createQuery("SELECT r FROM Recipe r");
+		List<Recipe> recipes = query.getResultList();
 		return util.getJSONForObject(recipes);
 	}
 
-	@Override
+	
 	public String getARecipe(int id) {
 		return util.getJSONForObject(manager.find(Recipe.class, id));
 	}
@@ -64,7 +65,15 @@ public class RecipeDBRepository implements RecipeRepository {
 		} else {
 			return "{\"message\":\"Cannot find the recipe\"}";
 		}
-		
+		 
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
 	}
 
 }

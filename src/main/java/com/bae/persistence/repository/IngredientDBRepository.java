@@ -1,14 +1,16 @@
 package com.bae.persistence.repository;
 
-import java.util.Collection;
+
+import java.util.List;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
-import javax.persistence.TypedQuery;
+
 
 import com.bae.persistence.domain.Ingredient;
 import com.bae.util.JSONUtil;
@@ -25,8 +27,8 @@ public class IngredientDBRepository implements IngredientRepository{
 	 
  
 	public String getAllIngredients() {
-		TypedQuery<Ingredient> query = manager.createQuery("SELECT i FROM Ingredient i", Ingredient.class);
-		Collection<Ingredient> ingredients = query.getResultList();
+		Query query = manager.createQuery("SELECT i FROM Ingredient i");
+		List<Ingredient> ingredients = query.getResultList();
 		return util.getJSONForObject(ingredients);
 	}
  
@@ -35,7 +37,7 @@ public class IngredientDBRepository implements IngredientRepository{
 		return util.getJSONForObject(manager.find(Ingredient.class, id));
 	}
 
-
+ 
 	@Transactional(TxType.REQUIRED)
 	public String addIngredient(String ingredient) {
 		Ingredient newIngr = util.getObjectForJSON(ingredient, Ingredient.class);
@@ -69,9 +71,19 @@ public class IngredientDBRepository implements IngredientRepository{
 			manager.persist(ingrToUpdate);
 			return "{\"message\": \"ingredient successfully updated\"}";
 		} else {
-			return "{\"message\": \"cannot find ingredient\"}";
+			return "{\"message\": \"cannot find this ingredient\"}";
 		}
 		
+	}
+
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
 	}
 		
 }
