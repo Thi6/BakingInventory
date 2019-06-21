@@ -16,7 +16,7 @@ const getRecipes = () => {
             console.log(data[0].name);
             console.log(req.responseText);
 
-            const tableContainer = document.getElementById('recipeTable');
+            
             tableContainer.className = "table table-hover"; //bootstrap
 
             // creating table rows and adding data into the rows
@@ -74,7 +74,7 @@ const getRecipe = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
          
-            const tableContainer = document.getElementById('recipeTable');
+            
             ////
             tableContainer.className = "table table-hover";
 
@@ -86,9 +86,7 @@ const getRecipe = () => {
             let aName = document.createElement('td');
             aName.innerHTML = data.name;
 
-
-
-            let changeName = document.createElement('td');
+            
             let editName = document.createElement('input');
             editName.id = data.name + "text";
             editName.type = "text";

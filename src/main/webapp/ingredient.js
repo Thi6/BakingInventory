@@ -12,7 +12,6 @@ const getAllIngredients = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
            
-            const tableContainer = document.getElementById('ingredientTable');
             tableContainer.className = "table table-hover"; //bootstrap
 
             // creating table rows and adding data into the rows
@@ -33,7 +32,7 @@ const getAllIngredients = () => {
                 let anExpiryDate = document.createElement('td');
                 anExpiryDate.innerHTML = data[j].expiryDate;
 
-                let anUpdate = document.createElement('td');
+                
                 let updateButton = document.createElement('button');
 
                 updateButton.id = data[j].name;
@@ -87,7 +86,6 @@ const getAnIngredient = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
          
-            const tableContainer = document.getElementById('ingredientTable');
             tableContainer.className = "table table-hover";
 
             let aRow = document.createElement('tr');
