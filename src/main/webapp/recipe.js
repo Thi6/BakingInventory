@@ -28,7 +28,7 @@ const getRecipes = () => {
                 let aName = document.createElement('td');
                 aName.innerHTML = data[i].name;
 
-                let changeName = document.createElement('td');
+                  
                 let editName = document.createElement('input');
                 editName.id = data[i].name + "text";
                 editName.type = "text";
