@@ -72,10 +72,10 @@ public class Ingredient {
 		this.expiryDate = expiryDate;
 	}
 	
-	public String toString() {
+/*	public String toString() {
 		return "Ingredient [ingredientId=" + ingredientId + ", name=" + name + ", category=" + category + ", quantity="
 				+ quantity + ", threshold=" + threshold + ", expiryDate=" + expiryDate + "]";
-	}
+	}*/
 
 	
 	

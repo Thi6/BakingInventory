@@ -10,7 +10,7 @@ import com.bae.persistence.repository.RecipeMapRepository;
 import com.bae.util.JSONUtil;
 import com.bae.util.TestConstants;
  
-public class RecipeServiceTest {
+public class RecipeMapRepositoryTest {
 	private RecipeMapRepository rmr;
 	private Recipe recipe1 = new Recipe(1, "Chocolate Chip Cookie");
 	private Recipe recipe2 = new Recipe(2, "Carrot Cake");

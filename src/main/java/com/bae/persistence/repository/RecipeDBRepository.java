@@ -16,20 +16,21 @@ import com.bae.util.JSONUtil;
 @Transactional(TxType.SUPPORTS)
 @Default
 public class RecipeDBRepository implements RecipeRepository {
+	
 	@PersistenceContext(unitName = "primary")
 	EntityManager manager;
 	
 	@Inject
 	private JSONUtil util;
 	
-	@Override
+	
 	public String getAllRecipes() {
 		Query query = manager.createQuery("SELECT r FROM Recipe r");
 		List<Recipe> recipes = query.getResultList();
 		return util.getJSONForObject(recipes);
 	}
 
-	@Override
+	
 	public String getARecipe(int id) {
 		return util.getJSONForObject(manager.find(Recipe.class, id));
 	}

@@ -12,7 +12,7 @@ import com.bae.util.JSONUtil;
 import com.bae.util.TestConstants;
 
 
-public class IngredientServiceTest {
+public class IngredientMapRepositoryTest {
 	private IngredientMapRepository imr;
 	
 	private JSONUtil util = new JSONUtil();
